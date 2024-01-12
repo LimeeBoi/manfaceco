@@ -7,14 +7,14 @@ import { useState, useContext, createContext } from 'react';
 
 const Context = createContext(null);
 function App() {
-  const [cp, setCp] = useState(0); // current page
+  const [index, setIndex] = useState(0); // current page
   return (
     <div className="App">
       <header className="App-header">
         <Context.Provider
           value={{
-            next: () => setCp(cp + 1),
-            prev: () => setCp(cp - 1)
+            next: () => setIndex(index + 1),
+            prev: () => setIndex(index - 1)
           }}
         >
           <Intro/>
