@@ -7,6 +7,7 @@ import { useState, useContext, createContext } from 'react';
 
 const Context = createContext(null);
 function App() {
+  const page = [<Intro/>, <AboutUs/>];
   const [index, setIndex] = useState(0); // current page
   return (
     <div className="App">
@@ -17,7 +18,7 @@ function App() {
             prev: () => setIndex(index - 1)
           }}
         >
-          <Intro/>
+          {page[index]}
         </Context.Provider>
       </header>
     </div>
