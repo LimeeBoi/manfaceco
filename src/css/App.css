@@ -1,10 +1,12 @@
 .App {
   text-align: center;
-  font-family: monospace;
+  font-family: monospace 'monaco';
+  margin: 2.5vmin;
+  background-color: #353a45;
 }
 
 .App-header {
-  background-color: #282c34;
+  margin: 2.5vmin;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -12,6 +14,47 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.med-img {
+  width: 50vmin;
+  height: 28vmin;
+  margin: 5vmin
+}
+
+.seperator {
+  font-size: 5vmin;
+  margin: 0px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  height: 5vmin;
+  width: 5vmin;
+  border-radius: 50%;
+}
+
+.icon:hover {
+  background-color: rgb(69, 78, 93);
+}
+
+h1 {
+  font-size: calc(10px + 7vmin);
+}
+
+p {
+  font-size: calc(10px + 1vmin);
+  margin: 2vmin
 }
 
 @keyframes App-logo-spin {
