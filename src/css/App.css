@@ -9,12 +9,14 @@
 .App-header {
   margin: 5vmin;
   padding: 5vmin;
-  min-height: 100vh;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
   background-color: white;
   color: black;
   border: 1vmin solid black;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
 .med-img {
@@ -39,6 +41,12 @@
   justify-content: center;
 }
 
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
 .icon {
   height: 5vmin;
   width: 5vmin;
@@ -51,6 +59,9 @@
 
 .page {
   max-width: 110vmin;
+  min-width: 80vmin;
+  z-index: 0;
+  padding: 5vmin;
 }
 
 h1 {

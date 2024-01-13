@@ -1,6 +1,12 @@
 import './css/App.css';
 import creditsImg from './img/credits.png';
 import bruhImg from './img/bruh.png';
+import hmmmImg from './img/hmmm.png';
+import pillowImg from './img/pillow.png';
+import shrekImg from './img/shrek.png';
+import yesImg from './img/yes.png';
+import lennyImg from './img/lenny.png';
+import noobImg from './img/noob.png';
 import leftArrowImg from './img/left-arrow.svg';
 import rightArrowImg from './img/right-arrow.svg';
 import { useState, useContext, createContext } from 'react';
@@ -17,9 +23,17 @@ function App() {
     <Bruh severity="big boi"/>,
     <Bruh/>
   ];
+  const images = [
+    hmmmImg,
+    pillowImg,
+    shrekImg,
+    yesImg,
+    lennyImg,
+    noobImg
+  ];
   const [index, setIndex] = useState(3); // current page
   const [ca, setCa] = useState(''); // current animation
-  console.log(index);
+  const [cii, setCii] = useState(Math.floor(Math.random() * images.length)); // current image index
   return (
     <div 
       className="App" 
@@ -29,32 +43,45 @@ function App() {
           value={{
             next: () => {
               setCa('1s ease-in-out 0s 1 normal none running move-right-0'); // move to the right (departing)
-              setTimeout(() => setIndex(index + 1), 600);
+              setTimeout(() => {
+                setIndex(index + 1);
+                setCii(Math.floor(Math.random() * images.length - 1));
+              }, 600);
               setTimeout(() => setCa('1s ease-in-out 0s 1 normal none running move-right-1'), 950); // move to the right (arriving)
               if (index >= pages.length - 3) {
-                console.log('e')
                 setTimeout(() => { // minigaem
                   setCa('1.5s ease-in-out 0s 1 normal none running move-left-0'); 
-                  setTimeout(() => setIndex(index), 1100);
+                  setTimeout(() => {
+                    setIndex(index);
+                    setCii(images.length - 1);
+                  }, 1100);
                   setTimeout(() => setCa('1.5s ease-in-out 0s 1 normal none running move-left-1'), 1450); 
                 }, 2000)
               }
             },
             prev: () => {
               setCa('1s ease-in-out 0s 1 normal none running move-left-0'); // move to the left (departing)
-              setTimeout(() => setIndex(index - 1), 600);
+              setTimeout(() => {
+                setIndex(index - 1);
+                setCii(Math.floor(Math.random() * images.length - 1));
+              }, 600);
               setTimeout(() => setCa('1s ease-in-out 0s 1 normal none running move-left-1'), 950); // move to the left (arriving)
               if (index <= 2) {
                 setTimeout(() => { // minigaem
                   setCa('1.5s ease-in-out 0s 1 normal none running move-right-0');
-                  setTimeout(() => setIndex(index), 1100);
+                  setTimeout(() => {
+                    setIndex(index);
+                    setCii(images.length - 1);
+                  }, 1100);
                   setTimeout(() => setCa('1.5s ease-in-out 0s 1 normal none running move-right-1'), 1450);
                 }, 2000);
               }
             }
           }}
       >
-        <header className="App-header center">
+        <header className="App-header top" style={{
+          backgroundImage: 'url(' + images[cii] + ')'
+        }}>
           {pages[index]}
         </header>
       </Context.Provider>
@@ -65,23 +92,23 @@ function App() {
 function Bruh({ severity }) {
   if (severity === 'smol') {
     return (
-      <>
+      <div className="page">
         <h1>
           Nice you made it to teh border! (ur not gonna cross it)
         </h1>
         <Navigation
           text="bruh"
         />
-      </>
+      </div>
     );
   } else if (severity === 'big boi') {
     return (
-      <>  
+      <div className="page">  
         <h1>no</h1>
         <Navigation
           text="pls stop"
         />
-      </>
+      </div>
     );
   } else {
     throw new Error('Okay, you crossed the border. Welcome to Brazil!');
