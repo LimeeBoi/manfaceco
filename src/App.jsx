@@ -175,11 +175,33 @@ function OurWork() {
         Their memes cover a wide range of topics, from random things and theories to current events and trending topics. 
         No matter what you're interested in, Man Face Co. has something for you.
         We offer:
+        <ul>
+          <li>
+            Customized Meme Creation - We offer personalized meme creation services for individuals and creative groups that we trust. 
+            Our team of creative experts can turn any idea into a hilarious meme that will make your audience laugh and share.
+          </li>
+          <li>
+            Meme Marketing - Memes have become a powerful tool for marketing and branding. 
+            We help businesses and brands leverage the power of memes to reach a wider audience, increase engagement, and build brand awareness.
+          </li>
+          <li>Meme Merchandise - Show off your love!</li>
+        </ul>
+        Contact us for more!
       </p>
       <Seperator/>
       <Navigation
         text="OUR WORK"
       />
+    </div>
+  );
+}
+
+function ContactUs() {
+  return (
+    <div className="working-hours page">
+      <h2>Contact</h2>
+      <h2>Working Hours</h2>
+      <p>Mon - Fri: 9:00am - 3:00pm</p>
     </div>
   );
 }

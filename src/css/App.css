@@ -69,7 +69,7 @@ h1 {
 }
 
 p {
-  font-size: calc(10px + 1vmin);
+  font-size: calc(10px + 1.2vmin);
   margin: 2vmin;
   text-align: left;
   line-height: 3vmin;
