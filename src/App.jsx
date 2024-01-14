@@ -4,7 +4,6 @@ import bruhImg from './img/bruh.png';
 import hmmmImg from './img/hmmm.png';
 import pillowImg from './img/pillow.png';
 import shrekImg from './img/shrek.png';
-import yesImg from './img/yes.png';
 import lennyImg from './img/lenny.png';
 import noobImg from './img/noob.png';
 import leftArrowImg from './img/left-arrow.svg';
@@ -27,13 +26,12 @@ function App() {
     hmmmImg,
     pillowImg,
     shrekImg,
-    yesImg,
     lennyImg,
     noobImg
   ];
   const [index, setIndex] = useState(3); // current page
   const [ca, setCa] = useState(''); // current animation
-  const [cii, setCii] = useState(Math.floor(Math.random() * images.length)); // current image index
+  const [cii, setCii] = useState(Math.floor(Math.random() * images.length - 1)); // current image index
   return (
     <div 
       className="App" 
