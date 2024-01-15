@@ -31,7 +31,7 @@ function App() {
   ];
   const [index, setIndex] = useState(3); // current page
   const [ca, setCa] = useState(''); // current animation
-  const [cii, setCii] = useState(Math.floor(Math.random() * images.length - 1)); // current image index
+  // const [cii, setCii] = useState(Math.floor(Math.random() * images.length - 1)); // current image index
   return (
     <div 
       className="App" 
@@ -43,7 +43,7 @@ function App() {
               setCa('1s ease-in-out 0s 1 normal none running move-right-0'); // move to the right (departing)
               setTimeout(() => {
                 setIndex(index + 1);
-                setCii(Math.floor(Math.random() * images.length - 1));
+                // setCii(Math.floor(Math.random() * images.length - 1));
               }, 600);
               setTimeout(() => setCa('1s ease-in-out 0s 1 normal none running move-right-1'), 950); // move to the right (arriving)
               if (index >= pages.length - 3) {
@@ -51,7 +51,7 @@ function App() {
                   setCa('1.5s ease-in-out 0s 1 normal none running move-left-0'); 
                   setTimeout(() => {
                     setIndex(index);
-                    setCii(images.length - 1);
+                    // setCii(images.length - 1);
                   }, 1100);
                   setTimeout(() => setCa('1.5s ease-in-out 0s 1 normal none running move-left-1'), 1450); 
                 }, 2000)
@@ -61,7 +61,7 @@ function App() {
               setCa('1s ease-in-out 0s 1 normal none running move-left-0'); // move to the left (departing)
               setTimeout(() => {
                 setIndex(index - 1);
-                setCii(Math.floor(Math.random() * images.length - 1));
+                // setCii(Math.floor(Math.random() * images.length - 1));
               }, 600);
               setTimeout(() => setCa('1s ease-in-out 0s 1 normal none running move-left-1'), 950); // move to the left (arriving)
               if (index <= 2) {
@@ -69,7 +69,7 @@ function App() {
                   setCa('1.5s ease-in-out 0s 1 normal none running move-right-0');
                   setTimeout(() => {
                     setIndex(index);
-                    setCii(images.length - 1);
+                    // setCii(images.length - 1);
                   }, 1100);
                   setTimeout(() => setCa('1.5s ease-in-out 0s 1 normal none running move-right-1'), 1450);
                 }, 2000);
@@ -78,7 +78,7 @@ function App() {
           }}
       >
         <header className="App-header top" style={{
-          backgroundImage: 'url(' + images[cii] + ')'
+          // backgroundImage: 'url(' + images[cii] + ')'
         }}>
           {pages[index]}
         </header>
