@@ -1,3 +1,5 @@
+
+/* COMPONENTS */
 .App {
   position: absolute;
   text-align: center;
@@ -23,6 +25,16 @@
   color: black;
 }
 
+.bruh {
+  color: white;
+}
+
+.seperator {
+  font-size: 5vmin;
+  margin: 0px;
+}
+
+/* MODIFIERS */
 .med-img {
   width: 50vmin;
   height: 28vmin;
@@ -30,15 +42,10 @@
   border: 1vmin solid #222;
 }
 
-.big-img {
+.big-img { 
   width: 80vmin;
   height: 46vmin;
   border: 2vmin solid #222;
-}
-
-.seperator {
-  font-size: 5vmin;
-  margin: 0px;
 }
 
 .flex-row {
@@ -64,7 +71,11 @@
   border-radius: 50%;
 }
 
-.icon:hover {
+.light {
+  background-color: white;
+}
+
+.button:hover {
   background-color: rgb(69, 78, 93);
 }
 
@@ -73,8 +84,10 @@
   min-width: 80vmin;
   z-index: 0;
   padding: 5vmin;
+  opacity: 90%;
 }
 
+/* ELEMENTS */
 h1 {
   font-size: calc(10px + 7vmin);
 }
@@ -101,6 +114,7 @@ li {
   line-height: 1.6;
 }
 
+/* KEYFRAMES */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

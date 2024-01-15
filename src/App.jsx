@@ -1,18 +1,17 @@
+// obese import
 import './css/App.css';
 import creditsImg from './img/credits.png';
 import bruhImg from './img/bruh.png';
-import hmmmImg from './img/hmmm.png';
-import pillowImg from './img/pillow.png';
-import shrekImg from './img/shrek.png';
 import lennyImg from './img/lenny.png';
 import noobImg from './img/noob.png';
 import waterImg from './img/water.png';
 import leftArrowImg from './img/left-arrow.svg';
 import rightArrowImg from './img/right-arrow.svg';
 import { useState, useContext, createContext } from 'react';
-const Context = createContext(null);
-function App() {
-  const pages = [
+
+const Context = createContext(null); // CONTEXT
+function App() { // da app
+  const pages = [ // PAGES
     <Bruh/>,
     <Bruh severity="big boi"/>, 
     <Bruh severity="smol"/>, 
@@ -23,17 +22,13 @@ function App() {
     <Bruh severity="big boi"/>,
     <Bruh/>
   ];
-  const images = [
-    hmmmImg,
-    pillowImg,
-    shrekImg,
+  const images = [ // IMAGES
     lennyImg,
     null,
     noobImg
   ];
   const [index, setIndex] = useState(3); // current page
   const [ca, setCa] = useState(''); // current animation
-  const [cii, setCii] = useState(images.length - 2); // current image index
   return (
     <div 
       className="App" 
@@ -41,20 +36,18 @@ function App() {
     >
       <Context.Provider
           value={{
-            next: () => {
+            next: () => { // next page
               setCa('1s ease-in-out 0s 1 normal none running move-right-0'); // move to the right (departing)
               setTimeout(() => {
-                setIndex(index + 1);
-                // setCii(Math.floor(Math.random() * images.length - 1));
-              }, 600);
+                setIndex(index + 1); // let component know to render next page
+              }, 600); // delay
               setTimeout(() => setCa('1s ease-in-out 0s 1 normal none running move-right-1'), 950); // move to the right (arriving)
-              if (index >= pages.length - 3) {
+              if (index >= pages.length - 3) { // IS ON BORDER
                 setTimeout(() => { // minigaem
                   setCa('1.5s ease-in-out 0s 1 normal none running move-left-0'); 
                   setTimeout(() => {
-                    setIndex(index);
-                    setCii(images.length - 1);
-                  }, 1100);
+                    setIndex(index); // go back right after page render (cuz its a minigaem)
+                  }, 1100); // make it hard to press arrow
                   setTimeout(() => setCa('1.5s ease-in-out 0s 1 normal none running move-left-1'), 1450); 
                 }, 2000)
               }
@@ -63,7 +56,6 @@ function App() {
               setCa('1s ease-in-out 0s 1 normal none running move-left-0'); // move to the left (departing)
               setTimeout(() => {
                 setIndex(index - 1);
-                // setCii(Math.floor(Math.random() * images.length - 1));
               }, 600);
               setTimeout(() => setCa('1s ease-in-out 0s 1 normal none running move-left-1'), 950); // move to the left (arriving)
               if (index <= 2) {
@@ -71,7 +63,6 @@ function App() {
                   setCa('1.5s ease-in-out 0s 1 normal none running move-right-0');
                   setTimeout(() => {
                     setIndex(index);
-                    setCii(images.length - 1);
                   }, 1100);
                   setTimeout(() => setCa('1.5s ease-in-out 0s 1 normal none running move-right-1'), 1450);
                 }, 2000);
@@ -80,7 +71,7 @@ function App() {
           }}
       >
         <header className="App-header top" style={{
-          backgroundImage: 'url(' + images[cii] + ')'
+          //backgroundImage: 'url(' + images[cii] + ')'
         }}>
           {pages[index]}
         </header>
@@ -92,18 +83,20 @@ function App() {
 function Bruh({ severity }) {
   if (severity === 'smol') {
     return (
-      <div className="page">
+      <div className="bruh page">
         <h2>
-          Nice you made it to teh border! (ur not gonna cross it)
+          Nice you made it to teh border! <br/> (ur not gonna cross it)
+          <br/> <br/>
         </h2>
         <Navigation
           text="bruh"
+          noob={true}
         />
       </div>
     );
   } else if (severity === 'big boi') {
     return (
-      <div className="page">  
+      <div className="bruh page">  
         <h1>no</h1>
         <Navigation
           text="pls stop"
@@ -228,9 +221,30 @@ function ContactUs() {
   );
 }
 
-function Navigation({ text }) { // this uses the context
+function Navigation({ text, noob }) { // this uses the context
   const context = useContext(Context);
-  return (
+  if (noob) return (
+    <nav className="center">
+      <img
+        className="icon button light"
+        src={leftArrowImg}
+        alt=" "
+        onClick={() => setTimeout(context.prev)}
+      />
+      <p style={{
+        fontSize: '4vmin',
+        fontWeight: '600',
+        fontFamily: 'monospace'
+      }}>{text}</p>
+      <img
+        className="icon button light"
+        src={rightArrowImg}
+        alt=" "
+        onClick={() => setTimeout(context.next)}
+      />
+    </nav>
+  );
+  else return (
     <nav className="center">
       <img
         className="icon"
@@ -244,7 +258,7 @@ function Navigation({ text }) { // this uses the context
         fontFamily: 'monospace'
       }}>{text}</p>
       <img
-        className="icon"
+        className="icon button"
         src={rightArrowImg}
         alt=" "
         onClick={() => setTimeout(context.next)}
