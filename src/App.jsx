@@ -6,6 +6,7 @@ import pillowImg from './img/pillow.png';
 import shrekImg from './img/shrek.png';
 import lennyImg from './img/lenny.png';
 import noobImg from './img/noob.png';
+import waterImg from './img/water.png';
 import leftArrowImg from './img/left-arrow.svg';
 import rightArrowImg from './img/right-arrow.svg';
 import { useState, useContext, createContext } from 'react';
@@ -27,11 +28,12 @@ function App() {
     pillowImg,
     shrekImg,
     lennyImg,
+    null,
     noobImg
   ];
   const [index, setIndex] = useState(3); // current page
   const [ca, setCa] = useState(''); // current animation
-  // const [cii, setCii] = useState(Math.floor(Math.random() * images.length - 1)); // current image index
+  const [cii, setCii] = useState(images.length - 2); // current image index
   return (
     <div 
       className="App" 
@@ -51,7 +53,7 @@ function App() {
                   setCa('1.5s ease-in-out 0s 1 normal none running move-left-0'); 
                   setTimeout(() => {
                     setIndex(index);
-                    // setCii(images.length - 1);
+                    setCii(images.length - 1);
                   }, 1100);
                   setTimeout(() => setCa('1.5s ease-in-out 0s 1 normal none running move-left-1'), 1450); 
                 }, 2000)
@@ -69,7 +71,7 @@ function App() {
                   setCa('1.5s ease-in-out 0s 1 normal none running move-right-0');
                   setTimeout(() => {
                     setIndex(index);
-                    // setCii(images.length - 1);
+                    setCii(images.length - 1);
                   }, 1100);
                   setTimeout(() => setCa('1.5s ease-in-out 0s 1 normal none running move-right-1'), 1450);
                 }, 2000);
@@ -78,7 +80,7 @@ function App() {
           }}
       >
         <header className="App-header top" style={{
-          // backgroundImage: 'url(' + images[cii] + ')'
+          backgroundImage: 'url(' + images[cii] + ')'
         }}>
           {pages[index]}
         </header>
@@ -91,9 +93,9 @@ function Bruh({ severity }) {
   if (severity === 'smol') {
     return (
       <div className="page">
-        <h1>
+        <h2>
           Nice you made it to teh border! (ur not gonna cross it)
-        </h1>
+        </h2>
         <Navigation
           text="bruh"
         />
@@ -173,19 +175,41 @@ function OurWork() {
         Their memes cover a wide range of topics, from random things and theories to current events and trending topics. 
         No matter what you're interested in, Man Face Co. has something for you.
         We offer:
-        <ul>
-          <li>
-            Customized Meme Creation - We offer personalized meme creation services for individuals and creative groups that we trust. 
-            Our team of creative experts can turn any idea into a hilarious meme that will make your audience laugh and share.
-          </li>
-          <li>
-            Meme Marketing - Memes have become a powerful tool for marketing and branding. 
-            We help businesses and brands leverage the power of memes to reach a wider audience, increase engagement, and build brand awareness.
-          </li>
-          <li>Meme Merchandise - Show off your love!</li>
-        </ul>
         Contact us for more!
       </p>
+      <ul>
+        <li>
+          Customized Meme Creation - We offer personalized meme creation services for individuals and creative groups that we trust. 
+          Our team of creative experts can turn any idea into a hilarious meme that will make your audience laugh and share.
+        </li>
+        <li>
+          Meme Marketing - Memes have become a powerful tool for marketing and branding. 
+          We help businesses and brands leverage the power of memes to reach a wider audience, increase engagement, and build brand awareness.
+        </li>
+        <li>Meme Merchandise - Show off your love!</li>
+      </ul>
+      <p>
+        <b>
+          Dear readers, Are you tired of scrolling through endless memes that just don't make you laugh?
+          Look no further, because Man Face Co. is here to provide you with the best quality memes that will leave you in stitches.
+          What sets us apart from other meme creators? We are dedicated to creating original 
+          and relatable content that will have you sharing with your friends and family. 
+          Our team of talented creators work tirelessly to ensure that our memes are fresh, funny, and always on point.
+        </b>
+      </p>
+      <ul>
+        <li>Originality: Our memes are created by our team of talented designers and writers, ensuring that each one is unique and original.</li>
+        <li>
+          Humor: We pride ourselves on creating memes that are guaranteed to make people laugh. 
+          We have a knack for finding the perfect balance of wit, sarcasm, and relatability in our memes.
+        </li>
+        <li>Relevance: Our memes are always timely and relevant, covering a wide range of topics and current events.</li>
+      </ul>
+      <img
+        className="big-img"
+        src={waterImg}
+        alt="bruh"
+      />
       <Seperator/>
       <Navigation
         text="OUR WORK"
