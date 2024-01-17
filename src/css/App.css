@@ -25,13 +25,27 @@
   color: black;
 }
 
-.bruh {
-  color: white;
+.navigation {
+  display: inline-block;
+  background-color: white;
+  padding: 0vmin 2vmin;
+  border: 1vmin solid #ccc;
+  border-radius: 18px;
+  position: absolute;
+  bottom: 5vmin;
+  right: 5vmin;
 }
 
 .seperator {
   font-size: 5vmin;
+  font-family: monospace;
+  font-weight: '800';
   margin: 0px;
+}
+
+.error {
+  background-color: rgba(255, 0, 0, 0.5);
+  color: red;
 }
 
 /* MODIFIERS */
@@ -124,6 +138,24 @@ li {
   }
 }
 
+/* ANIMATION CLASSES */
+.mv-left-0 {
+  animation: 1s ease-in-out 0s 1 normal none running move-left-0;
+}
+
+.mv-left-1 {
+  animation: 1s ease-in-out 0s 1 normal none running move-left-1;
+}
+
+.mv-right-0 {
+  animation: 1s ease-in-out 0s 1 normal none running move-right-0;
+}
+
+.mv-right-1 {
+  animation: 1s ease-in-out 0s 1 normal none running move-right-1;
+}
+
+/* ANIMATIONS */
 @keyframes move-right-0 {
   from {
     left: 50%;

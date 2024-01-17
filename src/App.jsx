@@ -1,12 +1,15 @@
 // obese import
 import './css/App.css';
+// images
 import creditsImg from './img/credits.png';
 import bruhImg from './img/bruh.png';
-import lennyImg from './img/lenny.png';
+// import lennyImg from './img/lenny.png';
 import noobImg from './img/noob.png';
 import waterImg from './img/water.png';
+// icons
 import leftArrowImg from './img/left-arrow.svg';
 import rightArrowImg from './img/right-arrow.svg';
+// actuall stuff that aren't images
 import { useState, useContext, createContext } from 'react';
 
 const Context = createContext(null); // CONTEXT
@@ -22,58 +25,71 @@ function App() { // da app
     <Bruh severity="big boi"/>,
     <Bruh/>
   ];
-  const images = [ // IMAGES
-    lennyImg,
-    null,
-    noobImg
-  ];
   const [index, setIndex] = useState(3); // current page
-  const [ca, setCa] = useState(''); // current animation
+  const [cc, setCc] = useState(''); // current class
+  const [ci, setCi] = useState(null); // current background image
   return (
     <div 
-      className="App" 
-      style={{animation: ca}}
+      className={'App ' + cc} 
     >
       <Context.Provider
           value={{
             next: () => { // next page
-              setCa('1s ease-in-out 0s 1 normal none running move-right-0'); // move to the right (departing)
+              setCc('mv-right-0'); // move to the right (departing)
               setTimeout(() => {
                 setIndex(index + 1); // let component know to render next page
               }, 600); // delay
-              setTimeout(() => setCa('1s ease-in-out 0s 1 normal none running move-right-1'), 950); // move to the right (arriving)
+              setTimeout(() => {
+                setCc('mv-right-1');
+                setCi(null);
+              }, 950); // move to the right (arriving)
               if (index >= pages.length - 3) { // IS ON BORDER
                 setTimeout(() => { // minigaem
-                  setCa('1.5s ease-in-out 0s 1 normal none running move-left-0'); 
+                  setCc('mv-left-0'); 
                   setTimeout(() => {
                     setIndex(index); // go back right after page render (cuz its a minigaem)
-                  }, 1100); // make it hard to press arrow
-                  setTimeout(() => setCa('1.5s ease-in-out 0s 1 normal none running move-left-1'), 1450); 
-                }, 2000)
+                    setCi(noobImg);
+                  }, 600); // make it hard to press arrow
+                  setTimeout(() => {
+                    setCc('mv-left-1')
+                  }, 900); //        DELAY
+                }, 2000)    //        DELAY
               }
             },
             prev: () => {
-              setCa('1s ease-in-out 0s 1 normal none running move-left-0'); // move to the left (departing)
+              setCc('mv-left-0'); // move to the left (departing)
               setTimeout(() => {
-                setIndex(index - 1);
-              }, 600);
-              setTimeout(() => setCa('1s ease-in-out 0s 1 normal none running move-left-1'), 950); // move to the left (arriving)
+                setIndex(index - 1); // let component know to render next page
+              }, 600); //             DELAY
+              setTimeout(() => {
+                setCc('mv-left-1');
+                setCi(null);
+              }, 950); // move to the left (arriving)
               if (index <= 2) {
                 setTimeout(() => { // minigaem
-                  setCa('1.5s ease-in-out 0s 1 normal none running move-right-0');
+                  setCc('mv-right-0');
                   setTimeout(() => {
                     setIndex(index);
-                  }, 1100);
-                  setTimeout(() => setCa('1.5s ease-in-out 0s 1 normal none running move-right-1'), 1450);
-                }, 2000);
+                    setCi(noobImg);
+                  }, 600); //         DELAY
+                  setTimeout(() => {
+                    setCc('mv-right-1')
+                  }, 900); //        DELAY
+                }, 2000); //          DELAY
               }
-            }
+            },
+            error: err => {
+
+            } 
           }}
       >
         <header className="App-header top" style={{
-          //backgroundImage: 'url(' + images[cii] + ')'
+          backgroundImage: 'url(' + ci + ')'
         }}>
           {pages[index]}
+          <Navigation
+            text="use this to get to places lol"
+          />
         </header>
       </Context.Provider>
     </div>
@@ -88,19 +104,19 @@ function Bruh({ severity }) {
           Nice you made it to teh border! <br/> (ur not gonna cross it)
           <br/> <br/>
         </h2>
-        <Navigation
+        {/* <Navigation
           text="bruh"
           noob={true}
-        />
+        /> */}
       </div>
     );
   } else if (severity === 'big boi') {
     return (
       <div className="bruh page">  
         <h1>no</h1>
-        <Navigation
+        {/* <Navigation
           text="pls stop"
-        />
+        /> */}
       </div>
     );
   } else {
@@ -119,9 +135,9 @@ function Intro() {
         alt="theres supposed to be an img here but u hav nigerian internet speeds."
       />
       <Seperator/>
-      <Navigation
+      {/* <Navigation
         text={'INTRO'}
-      />
+      /> */}
     </div>
   );
 }
@@ -151,9 +167,9 @@ function AboutUs() {
         Today, we continue to produce high-quality memes that bring joy and laughter to our followers, and we are excited to see where our brand will go in the future.
       </p>
       <Seperator/>
-      <Navigation
+      {/* <Navigation
         text="ABOUT US"
-      />
+      /> */}
     </div>
   );
 }
@@ -204,66 +220,47 @@ function OurWork() {
         alt="bruh"
       />
       <Seperator/>
-      <Navigation
+      {/* <Navigation
         text="OUR WORK"
-      />
+      /> */}
     </div>
   );
 }
 
-function ContactUs() {
-  return (
-    <div className="working-hours page">
-      <h2>Contact</h2>
-      <h2>Working Hours</h2>
-      <p>Mon - Fri: 9:00am - 3:00pm</p>
-    </div>
-  );
-}
+// function ContactUs() {
+//   return (
+//     <div className="working-hours page">
+//       <h2>Contact</h2>
+//       <h2>Working Hours</h2>
+//       <p>Mon - Fri: 9:00am - 3:00pm</p>
+//     </div>
+//   );
+// }
 
 function Navigation({ text, noob }) { // this uses the context
   const context = useContext(Context);
-  if (noob) return (
-    <nav className="center">
-      <img
-        className="icon button light"
-        src={leftArrowImg}
-        alt=" "
-        onClick={() => setTimeout(context.prev)}
-      />
-      <p style={{
-        fontSize: '4vmin',
-        fontWeight: '600',
-        fontFamily: 'monospace'
-      }}>{text}</p>
-      <img
-        className="icon button light"
-        src={rightArrowImg}
-        alt=" "
-        onClick={() => setTimeout(context.next)}
-      />
-    </nav>
-  );
-  else return (
-    <nav className="center">
-      <img
-        className="icon"
-        src={leftArrowImg}
-        alt=" "
-        onClick={() => setTimeout(context.prev)}
-      />
-      <p style={{
-        fontSize: '4vmin',
-        fontWeight: '600',
-        fontFamily: 'monospace'
-      }}>{text}</p>
-      <img
-        className="icon button"
-        src={rightArrowImg}
-        alt=" "
-        onClick={() => setTimeout(context.next)}
-      />
-    </nav>
+  return (
+    <div className="navigation">
+      <div className="flex-row center">
+        <img
+          className={'icon button ' + (noob ? 'light' : '')}
+          src={leftArrowImg}
+          alt=" "
+          onClick={() => setTimeout(context.prev)}
+        />
+        <p style={{
+          fontSize: '4vmin',
+          fontWeight: '600',
+          fontFamily: 'monospace'
+        }}>{text}</p>
+        <img
+          className={'icon button ' + (noob ? 'light' : '')}
+          src={rightArrowImg}
+          alt=" "
+          onClick={() => setTimeout(context.next)}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -271,9 +268,6 @@ function Seperator() {
   return (
     <h2 
       className="seperator"
-      style={{
-        fontFamily: 'monospace'
-      }}
     >—————————————————————————————————————</h2>
   );
 }
